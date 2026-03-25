@@ -42,10 +42,11 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(ellipse at 60% 0%, rgba(170, 210, 235, 0.8) 0%, transparent 52%),
-    radial-gradient(ellipse at 88% 55%, rgba(200, 185, 230, 0.5) 0%, transparent 45%),
-    radial-gradient(ellipse at 15% 80%, rgba(190, 215, 235, 0.55) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 105%, rgba(225, 195, 240, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 0%, rgba(140, 200, 235, 1) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 40%, rgba(190, 155, 235, 0.95) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 70%, rgba(155, 205, 240, 0.9) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(210, 170, 245, 0.9) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 80%, rgba(170, 220, 200, 0.7) 0%, transparent 45%),
     var(--color-bg);
   background-attachment: fixed;
 }
@@ -55,9 +56,12 @@ body {
 .hero,
 .our-work,
 .our-services {
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 16px;
+  max-width: 1400px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 img {
@@ -102,16 +106,29 @@ button { cursor: pointer; border: none; background: none; }
    =========================== */
 .navbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: var(--navbar-height);
-  padding: 0 40px;
+  width: min(100%, 1400px);
   background: rgba(220, 225, 235, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  padding: 0 60px;
+}
+
+.navbar__inner {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar__logo {
@@ -308,22 +325,33 @@ button { cursor: pointer; border: none; background: none; }
   scrollbar-width: none;
   padding-bottom: 8px;
 }
-.work-track-wrapper::-webkit-scrollbar { display: none; }
+.work-track-wrapper::-webkit-scrollbar {
+  height: 3px;
+}
+.work-track-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+}
+.work-track-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+}
+.work-track-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+.work-track-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.2) rgba(0,0,0,0.06);
+}
 .work-track-wrapper.grabbing { cursor: grabbing; }
 
 .work-track {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 20px;
   width: max-content;
   padding: 8px 4px 16px;
-  position: relative;
-}
-
-.work-track .work-card {
-  position: relative;
-  transition: box-shadow 0.25s ease;
-  will-change: transform;
 }
 
 /* Work Cards */
@@ -337,8 +365,8 @@ button { cursor: pointer; border: none; background: none; }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .work-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  transform: translateY(-10px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.13);
 }
 
 .work-card__image {
@@ -399,6 +427,46 @@ button { cursor: pointer; border: none; background: none; }
   transition: transform 0.2s;
 }
 .work-card__link:hover .work-card__arrow { transform: translate(2px, -2px); }
+
+/* See more projects */
+.work-card-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 160px;
+  flex-shrink: 0;
+  padding: 8px 20px 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  align-self: center;
+}
+
+.work-card-more:hover {
+  opacity: 1;
+}
+
+.work-card-more__text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.work-card-more__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.work-card-more:hover .work-card-more__arrow {
+  transform: translateX(4px);
+}
 
 /* ===========================
    OUR SERVICES
@@ -570,16 +638,25 @@ button { cursor: pointer; border: none; background: none; }
    =========================== */
 @media (max-width: 768px) {
 
-  /* Navbar */
-    .navbar { padding: 0 20px; }
+/* Navbar */
+ .navbar {
+    padding: 0;
+    max-width: none;
+  }
 
-  .navbar,
+  .navbar__inner {
+    padding: 0 20px;
+  }
+
   .hero,
   .our-work,
   .our-services {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }  
   .navbar__hamburger { display: flex; }
   .navbar__nav {
     display: none;

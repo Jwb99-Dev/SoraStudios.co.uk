@@ -59,37 +59,6 @@ wrapper.addEventListener('wheel', (e) => {
   wrapper.scrollLeft += e.deltaY * 1.5;
 }, { passive: false });
 
-/* ===========================
-   STACKING EFFECT ON SCROLL
-   Cards stay in place and next cards
-   slide over the top, stopping 10px short
-   =========================== */
-function updateStack() {
-  const cards = Array.from(track.querySelectorAll('.work-card'));
-  const wrapperScrollLeft = wrapper.scrollLeft;
-  const cardWidth = cards[0].offsetWidth;
-  const gap = 20;
-  const peekAmount = 10;
-  const stackStep = cardWidth - peekAmount;
-
-  cards.forEach((card, i) => {
-    // Natural position each card would sit at (side by side)
-    const naturalLeft = i * (cardWidth + gap);
-
-    // How far this card should be pulled left (stacking over previous)
-    const pullLeft = Math.min(wrapperScrollLeft, i * stackStep);
-
-    // Only pull cards after the first
-    const offset = i === 0 ? 0 : Math.min(wrapperScrollLeft - (i - 1) * stackStep, stackStep);
-    const clampedOffset = i === 0 ? 0 : Math.max(0, Math.min(offset, stackStep));
-
-    card.style.transform = `translateX(-${clampedOffset}px)`;
-    card.style.zIndex = i + 1;
-  });
-}
-
-wrapper.addEventListener('scroll', updateStack);
-updateStack();
 
 /* ===========================
    SERVICES: HIGHLIGHT ICON ON SCROLL
