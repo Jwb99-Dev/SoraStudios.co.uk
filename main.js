@@ -59,6 +59,9 @@ wrapper.addEventListener('wheel', (e) => {
   wrapper.scrollLeft += e.deltaY * 1.5;
 }, { passive: false });
 
+/* Allow native touch scroll on mobile */
+wrapper.addEventListener('touchstart', () => {}, { passive: true });
+
 
 /* ===========================
    SERVICES: HIGHLIGHT ICON ON SCROLL

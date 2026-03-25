@@ -354,6 +354,7 @@ button { cursor: pointer; border: none; background: none; }
   gap: 20px;
   width: max-content;
   padding: 8px 4px 16px;
+  touch-action: pan-x;
 }
 
 /* Work Cards */
@@ -662,11 +663,18 @@ button { cursor: pointer; border: none; background: none; }
 /* Navbar */
  .navbar {
     padding: 0;
-    max-width: none;
+    max-width: 100%;
+    width: 100%;
+    left: 0;
+    transform: none;
+    margin-top: 0;
   }
 
   .navbar__inner {
     padding: 0 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .hero,
@@ -706,9 +714,9 @@ button { cursor: pointer; border: none; background: none; }
     padding: 12px 0;
   }
 
-  /* Hero */
-  .hero__heading { font-size: clamp(32px, 9vw, 48px); }
-  .hero__tags .tag { font-size: 12px; }
+ /* Hero */
+  .hero__heading { font-size: clamp(38px, 10vw, 54px); }
+  .hero__tags .tag { font-size: 11px; padding: 5px 10px; }
 
   /* Our Work */
   .our-work { padding: 60px 20px; }
@@ -728,6 +736,10 @@ button { cursor: pointer; border: none; background: none; }
   .work-track-wrapper {
     -webkit-mask-image: none;
     mask-image: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
   }
   .work-card { width: 270px; }
   .work-card__image { height: 170px; }
