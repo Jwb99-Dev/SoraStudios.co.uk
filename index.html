@@ -46,12 +46,117 @@
         <span class="tag tag--green">Website Redesign</span>
       </div>
     </div>
-    <div class="hero__scroll">
+    <a href="#our-services" class="hero__scroll">
       <span class="hero__scroll-label">Scroll Down</span>
-      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="hero__scroll-arrow" width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7 1V18M7 18L1 12M7 18L13 12" stroke="#888" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-    </div>
+    </a>
+  </section>
+
+  
+
+  <!-- ===================== OUR SERVICES ===================== -->
+  <section class="our-services" id="our-services">
+    <div class="our-services__row">
+
+      <div class="our-services__intro">
+        <h2 class="section-title">Our Services</h2>
+        <p class="our-services__desc">We specialise in a few areas of design and development, find out more below:</p>
+      </div>
+
+      <div class="services-grid">
+
+      <article class="service-tile service-tile--ux">
+        <div class="service-tile__image">
+          <img src="Website Images/UX UI Design Image.png" alt="UX UI Design" />
+        </div>
+        <div class="service-tile__overlay"></div>
+        <div class="service-tile__top">
+          <div class="service-tile__icon-wrap">
+            <img src="Website Images/UX UI White Icon.png" alt="" />
+          </div>
+          <h3 class="service-tile__title">UX / UI Design</h3>
+        </div>
+        <a href="#" class="service-tile__link">
+          Find out more
+          <span class="service-tile__arrow">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+              <path d="M13 23L22 14M22 14H15M22 14V21" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </article>
+
+      <article class="service-tile service-tile--web">
+        <div class="service-tile__image">
+          <img src="Website Images/Website development image.png" alt="Website Development" />
+        </div>
+        <div class="service-tile__overlay"></div>
+        <div class="service-tile__top">
+          <div class="service-tile__icon-wrap">
+            <img src="Website Images/Website development white icon.png" alt="" />
+          </div>
+          <h3 class="service-tile__title">Website Development</h3>
+        </div>
+        <a href="#" class="service-tile__link">
+          Find out more
+          <span class="service-tile__arrow">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+              <path d="M13 23L22 14M22 14H15M22 14V21" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </article>
+
+      <article class="service-tile service-tile--photo">
+        <div class="service-tile__image">
+          <img src="Website Images/Photography Image.png" alt="Photography" />
+        </div>
+        <div class="service-tile__overlay"></div>
+        <div class="service-tile__top">
+          <div class="service-tile__icon-wrap">
+            <img src="Website Images/Photography white icon.png" alt="" />
+          </div>
+          <h3 class="service-tile__title">Photography</h3>
+        </div>
+        <a href="#" class="service-tile__link">
+          Find out more
+          <span class="service-tile__arrow">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+              <path d="M13 23L22 14M22 14H15M22 14V21" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </article>
+
+      <article class="service-tile service-tile--app">
+        <div class="service-tile__image">
+          <img src="Website Images/App design image.png" alt="App Design" />
+        </div>
+        <div class="service-tile__overlay"></div>
+        <div class="service-tile__top">
+          <div class="service-tile__icon-wrap">
+            <img src="Website Images/App design white icon.png" alt="" />
+          </div>
+          <h3 class="service-tile__title">App Design</h3>
+        </div>
+        <a href="#" class="service-tile__link">
+          Find out more
+          <span class="service-tile__arrow">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" stroke="rgba(255,255,255,0.6)" stroke-width="1.2"/>
+              <path d="M13 23L22 14M22 14H15M22 14V21" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </article>
+
+    </div><!-- end services-grid -->
+    </div><!-- end our-services__row -->
   </section>
 
   <!-- ===================== OUR WORK ===================== -->
@@ -153,72 +258,26 @@
 
     </div><!-- end .our-work__row -->
   </section>
-
-  <!-- ===================== OUR SERVICES ===================== -->
-  <section class="our-services" id="our-services">
-    <h2 class="section-title our-services__heading">Our Services</h2>
-
-    <div class="services-layout">
-
-      <div class="services-sidebar" id="servicesSidebar">
-        <button class="service-icon-btn active" data-index="0" aria-label="UX / UI Design">
-          <img src="Website Images/Service - UX UI Design icon.png" class="icon-selected" alt="" />
-          <img src="Website Images/Unselected - UX UI icon.png" class="icon-unselected" alt="" />
-        </button>
-        <button class="service-icon-btn" data-index="1" aria-label="Website Development">
-          <img src="Website Images/Services - Website Dev icon.png" class="icon-selected" alt="" />
-          <img src="Website Images/Unselected - Webside Dev icon.png" class="icon-unselected" alt="" />
-        </button>
-        <button class="service-icon-btn" data-index="2" aria-label="App Design">
-          <img src="Website Images/Services - App Design icon.png" class="icon-selected" alt="" />
-          <img src="Website Images/Unselected - App Design icon.png" class="icon-unselected" alt="" />
-        </button> 
-        <button class="service-icon-btn" data-index="3" aria-label="Rebranding">
-          <img src="Website Images/Services - Rebranding icon.png" class="icon-selected" alt="" />
-          <img src="Website Images/Unselected - Rebranding icon.png" class="icon-unselected" alt="" />
-        </button>
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about" id="about">
+    <div class="about__inner">
+      <div class="about__image">
+        <img src="Website Images/About_us_image.png" alt="About Sora Studios" />
       </div>
-
-      <div class="services-panels" id="servicesPanels">
-
-        <div class="service-panel" data-index="0">
-          <div class="service-panel__card service-card--ux">
-            <div class="service-panel__text">
-              <h3 class="service-panel__heading">UX / UI Design</h3>
-              <p class="service-panel__desc">This is example text that later needs changing to describe the services of what ever is highlighted</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-panel" data-index="1">
-          <div class="service-panel__card service-card--web">
-            <div class="service-panel__text">
-              <h3 class="service-panel__heading">Website Development</h3>
-              <p class="service-panel__desc">This is example text that later needs changing to describe the services of what ever is highlighted</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-panel" data-index="2">
-          <div class="service-panel__card service-card--app">
-            <div class="service-panel__text">
-              <h3 class="service-panel__heading">App Design</h3>
-              <p class="service-panel__desc">This is example text that later needs changing to describe the services of what ever is highlighted</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-panel" data-index="3">
-          <div class="service-panel__card service-card--rebrand">
-            <div class="service-panel__text">
-              <h3 class="service-panel__heading">Rebranding</h3>
-              <p class="service-panel__desc">This is example text that later needs changing to describe the services of what ever is highlighted</p>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- end services-panels -->
-    </div><!-- end services-layout -->
+      <div class="about__content">
+        <h2 class="about__heading">Discover our journey and what drives us.</h2>
+        <p class="about__desc">Discover how Sora Studios began—with a simple idea to create meaningful digital experiences—and how that idea continues to shape everything we do.</p>
+        <a href="#" class="about__link">
+          Read More
+          <span class="about__arrow">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" stroke="#1a1a1a" stroke-width="1.2"/>
+              <path d="M13 23L22 14M22 14H15M22 14V21" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <script src="main.js"></script>
