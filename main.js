@@ -72,8 +72,10 @@ heroTags.forEach((tag, index) => {
     tag.classList.add('intro-pop');
     tag.addEventListener('animationend', () => {
       tag.classList.remove('intro-pop');
+      tag.removeAttribute('style');
+      tag.classList.add('settled');
     }, { once: true });
-  }, 600 + (index * 400));
+  }, 1900 + (index * 400));
 });
 
 
