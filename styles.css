@@ -258,7 +258,7 @@ button { cursor: pointer; border: none; background: none; }
 
 .hero__heading {
   font-family: var(--font-heading);
-  font-size: clamp(70px, 5.5vw, 67px);
+  font-size: clamp(80px, 5.5vw, 77px);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.015em;
