@@ -97,6 +97,15 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.classList.toggle('active');
   });
 
+  // X close button
+  const navClose = document.getElementById('navClose');
+  if (navClose) {
+    navClose.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('active');
+    });
+  }
+
   // Close menu on link click
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -158,6 +167,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
   document.querySelectorAll('.reveal-tile').forEach(el => tileObserver.observe(el));
+
+  // Service tile — overlay flash on scroll-in, staggered one by one
+  const flashObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseFloat(entry.target.dataset.tileDelay || 0);
+        setTimeout(() => {
+          entry.target.classList.remove('flash');
+          // Force reflow so animation restarts cleanly
+          void entry.target.offsetWidth;
+          entry.target.classList.add('flash');
+        }, delay * 200);
+        flashObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('.service-tile').forEach(el => flashObserver.observe(el));
 
   // About reveal
   const aboutObserver = new IntersectionObserver((entries) => {

@@ -233,6 +233,10 @@ body.preloader-active {
   transition: transform 0.3s, opacity 0.3s;
 }
 
+.nav-close {
+  display: none;
+}
+
 /* ============================================================
    HERO
    ============================================================ */
@@ -974,6 +978,21 @@ body.preloader-active {
 }
 
 /* ============================================================
+   SERVICE TILE — scroll-triggered overlay flash
+   When a tile enters view it flashes the white hover overlay
+   then settles back to the default dark overlay.
+   ============================================================ */
+@keyframes tileFlash {
+  0%   { background: var(--tile-overlay); }        /* dark start */
+  35%  { background: rgba(29, 29, 29, 0.25); }     /* flash to white-ish (same as hover) */
+  100% { background: var(--tile-overlay); }        /* settle back to dark */
+}
+
+.service-tile.flash .tile-overlay {
+  animation: tileFlash 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ============================================================
    HERO STICKY WRAP
    ============================================================ */
 .hero-sticky-wrap {
@@ -999,35 +1018,103 @@ body.preloader-active {
   /* NAV */
   .nav-hamburger { display: flex; }
 
+  /* Mobile menu — top-right corner panel, Kota-inspired */
   .nav-links {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    max-width: 300px;
-    height: 100vh;
-    background: rgba(15, 13, 40, 0.97);
-    backdrop-filter: blur(20px);
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    height: auto;
+    background: rgba(75, 68, 120, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
-    padding: 40px 32px;
-    gap: 32px;
-    transition: right 0.35s ease;
-    border-left: 1px solid rgba(255,255,255,0.08);
-    z-index: 999;
+    padding: 56px 32px 36px;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 20px;
+    z-index: 998;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+    transform-origin: top right;
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1),
+                opacity 0.25s ease;
   }
 
-  .nav-links.open { right: 0; }
+  .nav-links.open {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-  .nav-links a { font-size: 1.1rem; }
+  .nav-links a {
+    font-size: 1.25rem;
+    font-family: var(--font-hero);
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    padding: 8px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: color 0.2s;
+  }
 
-  .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-links li:last-child a { border-bottom: none; }
+
+  .nav-links a:hover { color: #fff; }
+
+  /* CTA button inside mobile menu */
+  .nav-links .nav-cta {
+    margin-top: 8px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.4) !important;
+    border-radius: 50px !important;
+    padding: 10px 20px !important;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.4) !important;
+  }
+
+  /* X close button inside the menu */
+  .nav-close {
+    display: flex;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    line-height: 1;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+
+  .nav-close:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Hamburger stays visible but doesn't transform — X replaces it */
+  .nav-hamburger.active span:nth-child(1) { opacity: 0; }
   .nav-hamburger.active span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-hamburger.active span:nth-child(3) { opacity: 0; }
 
   /* HERO */
-  .hero-headline { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-headline { font-size: clamp(2.6rem, 9vw, 3.4rem); }
+  .hero-tag { font-size: 0.72rem; padding: 6px 14px; }
+  .hero-line { white-space: normal; }
+
+  /* Scroll down — move it higher on mobile */
+  .hero-scroll { bottom: 72px; }
 
   /* SERVICES */
   .services-grid {
@@ -1039,11 +1126,13 @@ body.preloader-active {
 
   .tile-content { min-height: 220px; }
 
-  /* WORK */
-  .work-inner { padding: 0 16px; }
-
-  .work-card { flex: 0 0 240px; }
-
+  /* WORK — full width cards, one at a time */
+  .work-inner { padding: 0 12px; }
+  .work-track-wrapper { overflow: hidden; }
+  .work-card {
+    flex: 0 0 calc(100vw - 80px);
+    max-width: 340px;
+  }
   .work-arrow { display: flex; }
 
   /* ABOUT */
@@ -1057,10 +1146,10 @@ body.preloader-active {
 }
 
 @media (max-width: 480px) {
-  .hero-headline { font-size: 1.8rem; }
+  .hero-headline { font-size: clamp(2.2rem, 10vw, 2.8rem); }
   .hero-tags { gap: 8px; }
-  .hero-tag { font-size: 0.78rem; padding: 6px 14px; }
+  .hero-tag { font-size: 0.68rem; padding: 5px 12px; }
   .navbar { width: calc(100% - 24px); top: 10px; }
   .services { padding: 70px 16px; }
-  .work-card { flex: 0 0 220px; }
+  .work-card { flex: 0 0 calc(100vw - 72px); }
 }
