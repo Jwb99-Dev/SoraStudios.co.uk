@@ -74,6 +74,79 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 /* ============================================================
+   PRELOADER
+   ============================================================ */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #24173E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* Exit: scale up & fade out, revealing the site beneath */
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#preloader.preloader-exit {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+/* Container holds both circle and star so they scale together on exit */
+.loader-assets {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading ring — spins continuously */
+.loading-circle {
+  position: absolute;
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.10);
+  border-top-color: rgba(255, 255, 255, 0.90);
+  border-right-color: rgba(255, 255, 255, 0.35);
+  animation: preloader-spin 1s linear infinite;
+}
+
+/* Sora Star — rotates 360° over 1.8 s with a subtle pulse */
+.sora-star {
+  width: 68px;
+  height: 68px;
+  z-index: 2;
+  animation: preloader-star 1.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+}
+
+@keyframes preloader-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Star: fade in → spin 360° → slight scale bounce at the end */
+@keyframes preloader-star {
+  0%   { opacity: 0; transform: rotate(0deg) scale(0.7); }
+  12%  { opacity: 1; transform: rotate(0deg) scale(1); }
+  80%  { transform: rotate(340deg) scale(1); }
+  92%  { transform: rotate(368deg) scale(1.12); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Body locked while preloader is active */
+body.preloader-active {
+  overflow: hidden;
+}
+
+/* ============================================================
+   LEGACY / UNUSED PRELOADER HELPERS (kept for safety)
+   ============================================================ */
+.hidden { visibility: hidden; }
+
+/* ============================================================
    NAVBAR
    ============================================================ */
 .navbar {

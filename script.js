@@ -5,6 +5,83 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ============================================================
+     PRELOADER
+     — Star animates for 1.8 s, then the preloader fades out
+       and page animations begin mid-exit so the hero is still
+       animating when the loader finishes.
+     ============================================================ */
+  const preloader   = document.getElementById('preloader');
+
+  // Total time the preloader is visible before exit starts
+  const PRELOADER_DURATION = 1400; // ms  (matches star animation)
+  // How long the CSS exit transition takes (see #preloader.preloader-exit)
+  const EXIT_DURATION      = 550;  // ms
+
+  // The moment the preloader starts exiting, kick off page animations
+  // so they're already partway through when the preloader disappears.
+  const PAGE_ANIM_LEAD     = 200;  // ms before exit — head-start for page
+
+  setTimeout(() => {
+    // Start page animations slightly before the exit so they're visible underneath
+    startPageAnimations();
+
+    setTimeout(() => {
+      // Trigger CSS exit transition on the preloader
+      preloader.classList.add('preloader-exit');
+      document.body.classList.remove('preloader-active');
+
+      // Remove from DOM after transition completes
+      setTimeout(() => {
+        preloader.remove();
+      }, EXIT_DURATION + 100);
+    }, PAGE_ANIM_LEAD);
+
+  }, PRELOADER_DURATION - PAGE_ANIM_LEAD);
+
+  /* ============================================================
+     PAGE ANIMATIONS
+     — Called mid-preloader-exit so animations are in progress
+       when the preloader finishes disappearing.
+     ============================================================ */
+  function startPageAnimations() {
+
+    /* ---- HERO stagger text ---- */
+    const staggerEls = document.querySelectorAll('.animate-stagger');
+
+    staggerEls.forEach(el => {
+      const delay = parseFloat(el.dataset.delay || 0);
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, 80 + delay * 260);
+    });
+
+    /* ---- HERO TAGS — appear then pulse one by one ---- */
+    const tags = document.querySelectorAll('.animate-tag');
+    const baseTagDelay = 80 + (staggerEls.length - 1) * 260 + 300;
+
+    tags.forEach(tag => {
+      const tagDelay = parseInt(tag.dataset.tagDelay || 0);
+      const appearAt  = baseTagDelay + tagDelay * 220;
+      const pulseAt   = baseTagDelay + tags.length * 220 + tagDelay * 280 + 150;
+
+      setTimeout(() => { tag.classList.add('tag-visible'); }, appearAt);
+
+      setTimeout(() => {
+        tag.classList.add('tag-pulse');
+        setTimeout(() => tag.classList.remove('tag-pulse'), 600);
+      }, pulseAt);
+
+      tag.addEventListener('mouseenter', () => {
+        tag.classList.remove('tag-pulse');
+        tag.classList.add('hovered');
+      });
+      tag.addEventListener('mouseleave', () => {
+        tag.classList.remove('hovered');
+      });
+    });
+  }
+
+  /* ============================================================
      NAVBAR — scroll & mobile toggle
      ============================================================ */
   const navbar    = document.getElementById('navbar');
@@ -25,50 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
       navToggle.classList.remove('active');
-    });
-  });
-
-  /* ============================================================
-     HERO — stagger text animation
-     ============================================================ */
-  const staggerEls = document.querySelectorAll('.animate-stagger');
-
-  staggerEls.forEach(el => {
-    const delay = parseFloat(el.dataset.delay || 0);
-    setTimeout(() => {
-      el.classList.add('visible');
-    }, 200 + delay * 260);
-  });
-
-  /* ============================================================
-     HERO TAGS — appear then pulse one by one
-     ============================================================ */
-  const tags = document.querySelectorAll('.animate-tag');
-  const baseTagDelay = 200 + (staggerEls.length - 1) * 260 + 300;
-
-  tags.forEach(tag => {
-    const tagDelay = parseInt(tag.dataset.tagDelay || 0);
-    const appearAt  = baseTagDelay + tagDelay * 220;
-    const pulseAt   = baseTagDelay + tags.length * 220 + tagDelay * 280 + 150;
-
-    // Appear
-    setTimeout(() => {
-      tag.classList.add('tag-visible');
-    }, appearAt);
-
-    // Pulse after all tags have appeared
-    setTimeout(() => {
-      tag.classList.add('tag-pulse');
-      setTimeout(() => tag.classList.remove('tag-pulse'), 600);
-    }, pulseAt);
-
-    // Persistent hover rotation
-    tag.addEventListener('mouseenter', () => {
-      tag.classList.remove('tag-pulse');
-      tag.classList.add('hovered');
-    });
-    tag.addEventListener('mouseleave', () => {
-      tag.classList.remove('hovered');
     });
   });
 
