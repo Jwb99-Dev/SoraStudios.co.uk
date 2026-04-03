@@ -198,7 +198,8 @@ body.preloader-active {
 .nav-links a:hover { color: #fff; }
 
 .nav-links a.active {
-  text-decoration: underline;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
 }
 
 .hero-tag {
@@ -1082,7 +1083,7 @@ body.preloader-active {
   .nav-links a:hover { color: #fff; }
 
   .nav-links a.active {
-    border-bottom-color: #fff;
+    border-bottom: 2px solid #fff;
     color: #fff;
   }
 
