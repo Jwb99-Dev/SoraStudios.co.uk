@@ -765,6 +765,7 @@ body.preloader-active { overflow: hidden; }
 }
 
 @media (max-width: 480px) {
+  .navbar { width: calc(100% - 24px); top: 10px; }
   .services-detail { padding: 60px 16px 80px; }
   .pricing { padding: 70px 16px 90px; }
   .tab-btn { padding: 8px 12px; font-size: 0.72rem; }
