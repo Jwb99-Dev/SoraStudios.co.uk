@@ -11,32 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
        animating when the loader finishes.
      ============================================================ */
   const preloader   = document.getElementById('preloader');
+  const PRELOADER_DURATION = 1400;
+  const EXIT_DURATION      = 550;
+  const PAGE_ANIM_LEAD     = 200;
 
-  // Total time the preloader is visible before exit starts
-  const PRELOADER_DURATION = 1400; // ms  (matches star animation)
-  // How long the CSS exit transition takes (see #preloader.preloader-exit)
-  const EXIT_DURATION      = 550;  // ms
+  const hasVisited = sessionStorage.getItem('soraVisited');
 
-  // The moment the preloader starts exiting, kick off page animations
-  // so they're already partway through when the preloader disappears.
-  const PAGE_ANIM_LEAD     = 200;  // ms before exit — head-start for page
-
-  setTimeout(() => {
-    // Start page animations slightly before the exit so they're visible underneath
-    startPageAnimations();
-
+  if (!hasVisited) {
+    sessionStorage.setItem('soraVisited', 'true');
     setTimeout(() => {
-      // Trigger CSS exit transition on the preloader
-      preloader.classList.add('preloader-exit');
-      document.body.classList.remove('preloader-active');
-
-      // Remove from DOM after transition completes
+      startPageAnimations();
       setTimeout(() => {
-        preloader.remove();
-      }, EXIT_DURATION + 100);
-    }, PAGE_ANIM_LEAD);
-
-  }, PRELOADER_DURATION - PAGE_ANIM_LEAD);
+        preloader.classList.add('preloader-exit');
+        document.body.classList.remove('preloader-active');
+        setTimeout(() => {
+          preloader.remove();
+        }, EXIT_DURATION + 100);
+      }, PAGE_ANIM_LEAD);
+    }, PRELOADER_DURATION - PAGE_ANIM_LEAD);
+  } else {
+    preloader.remove();
+    document.body.classList.remove('preloader-active');
+    startPageAnimations();
+  }
 
   /* ============================================================
      PAGE ANIMATIONS

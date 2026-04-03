@@ -188,6 +188,19 @@ body.preloader-active {
   gap: 28px;
 }
 
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: #fff; }
+
+.nav-links a.active {
+  text-decoration: underline;
+}
+
 .hero-tag {
   display: inline-block;
   padding: 14px 34px;
@@ -497,6 +510,7 @@ body.preloader-active {
 .service-tile:hover {
   transform: translateY(-8px) !important;
   box-shadow: var(--tile-shadow-hover);
+  animation: tileFlash 0.5s ease forwards;
 }
 
 .tile-img-wrap {
@@ -1061,10 +1075,16 @@ body.preloader-active {
     border-bottom: 1px solid rgba(255,255,255,0.07);
     transition: color 0.2s;
   }
+  
 
   .nav-links li:last-child a { border-bottom: none; }
 
   .nav-links a:hover { color: #fff; }
+
+  .nav-links a.active {
+    border-bottom-color: #fff;
+    color: #fff;
+  }
 
   /* CTA button inside mobile menu */
   .nav-links .nav-cta {
