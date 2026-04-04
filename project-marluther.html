@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Marluther Hotel — Sora Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="work.css" />
+  <style>
+    .project-page {
+      min-height: 100vh;
+      padding: 0 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 120px;
+      margin-bottom: 60px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 10px 20px;
+      width: fit-content;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+    .back-btn img {
+      width: 14px;
+      filter: brightness(0) invert(1);
+      opacity: 0.65;
+      transform: rotate(180deg);
+    }
+    .project-page-title {
+      font-family: var(--font-hero);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .project-page-sub {
+      font-size: 1rem;
+      color: var(--clr-muted);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+    @media (max-width: 480px) {
+      .back-btn { margin-top: 90px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="project-page">
+    <a href="work.html" class="back-btn">
+      <img src="Website Images/Back Arrow Right.png" alt="" />
+      Back to Projects
+    </a>
+    <h1 class="project-page-title">The Marluther Hotel</h1>
+    <p class="project-page-sub">This case study is coming soon. Check back shortly for the full project breakdown, including the brief, process and final deliverables.</p>
+  </div>
+</body>
+</html>
