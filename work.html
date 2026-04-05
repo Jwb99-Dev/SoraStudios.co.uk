@@ -71,13 +71,25 @@
         <p class="projects-intro reveal-up" data-delay="0.1">A selection of our recent work, spanning web design, UX/UI and visual content. Each project is built with a focus on clarity, performance and creating meaningful experiences that deliver real results.</p>
       </div>
 
-      <!-- Filter nav -->
+      <!-- Filter nav — desktop tabs -->
       <div class="projects-filter-nav">
         <button class="filter-btn active" data-filter="all">View All</button>
         <button class="filter-btn" data-filter="ux">UX / UI Design</button>
         <button class="filter-btn" data-filter="web">Website Development</button>
         <button class="filter-btn" data-filter="app">App Design</button>
         <button class="filter-btn" data-filter="photo">Photography</button>
+      </div>
+      </div>
+
+      <!-- Filter nav — mobile dropdown -->
+      <div class="filter-select-wrap">
+        <select class="filter-select" id="filterSelect">
+          <option value="all">View All</option>
+          <option value="photo">Photography</option>
+          <option value="ux">UX / UI Design</option>
+          <option value="web">Website Development</option>
+          <option value="app">App Design</option>
+        </select>
       </div>
 
       <!-- Cards grid -->
@@ -141,6 +153,28 @@
                 <span class="proj-tag tag-blue">Website Development</span>
               </div>
               <p class="project-card-desc">BlackHat Defence is a cybersecurity company that specialises in accountancy safety. They needed a full ...</p>
+              <div class="project-card-link">
+                Read More
+                <span class="project-card-arrow-wrap">
+                  <img src="Website Images/Back Arrow Right.png" alt="" />
+                </span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="project-card reveal-card" data-card-delay="0" data-tags="photo">
+          <a href="project-cotswolds.html" class="project-card-inner">
+            <div class="project-card-img-wrap">
+              <img src="Website Images/Cotswolds Project/Cotswolds Card Picture.png" alt="The Cotswolds" class="project-card-img" />
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">The Cotswolds</h3>
+              <div class="project-card-tags">
+                <span class="proj-tag tag-green">Photography</span>
+                <span class="proj-tag tag-personal">Personal Project</span>
+              </div>
+              <p class="project-card-desc">A personal photography project capturing the landscapes, villages and quiet beauty of the Cotswolds countryside.</p>
               <div class="project-card-link">
                 Read More
                 <span class="project-card-arrow-wrap">

@@ -115,32 +115,45 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal-up').forEach(el => upObserver.observe(el));
 
   /* ============================================================
-     FILTER NAV
+     FILTER NAV — desktop buttons + mobile select
      ============================================================ */
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns   = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
+  const filterSelect = document.getElementById('filterSelect');
+
+  function applyFilter(filter) {
+    projectCards.forEach(card => {
+      if (filter === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const tags = card.dataset.tags || '';
+        if (tags.split(' ').includes(filter)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    });
+  }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      projectCards.forEach(card => {
-        if (filter === 'all') {
-          card.classList.remove('hidden');
-        } else {
-          const tags = card.dataset.tags || '';
-          if (tags.split(' ').includes(filter)) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        }
-      });
+      if (filterSelect) filterSelect.value = btn.dataset.filter;
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  if (filterSelect) {
+    filterSelect.addEventListener('change', () => {
+      const val = filterSelect.value;
+      filterBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === val);
+      });
+      applyFilter(val);
+    });
+  }
 
   // Project cards — staggered
   const cardObserver = new IntersectionObserver((entries) => {
