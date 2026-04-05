@@ -29,6 +29,7 @@
   --clr-green:     #3db87e;
   --clr-purple:    #9b59d4;
   --clr-orange:    #e8874b;
+  
 
   --tile-overlay:  rgba(29, 29, 29, 0.80);
   --tile-shadow:   0 8px 32px rgba(0,0,0,0.25);
@@ -685,6 +686,8 @@ body.preloader-active {
   display: flex;
   flex-direction: column;
 }
+
+.tag-branding { background: #C83032; }
 
 .work-card:hover {
   box-shadow: var(--card-shadow-hover);

@@ -343,7 +343,7 @@ body.preloader-active { overflow: hidden; }
   grid-template-columns: auto 1fr;
   gap: 40px 120px;
   align-items: start;
-  margin-bottom: 60px;
+  margin-bottom: 150px;
 }
 
 .projects-title {
@@ -379,6 +379,43 @@ body.preloader-active { overflow: hidden; }
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal-card.revealed { opacity: 1; transform: translateY(0); }
+
+/* Filter nav */
+.projects-filter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 16px;
+}
+
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  letter-spacing: 0.01em;
+}
+
+.filter-btn:hover {
+  color: rgba(255,255,255,0.75);
+}
+
+.filter-btn.active {
+  color: #ffffff;
+}
+
+/* Card hidden state when filtered out */
+.project-card.hidden {
+  display: none;
+}
 
 /* Grid — 2 columns, third card left-aligned below */
 .projects-grid {

@@ -114,6 +114,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal-up').forEach(el => upObserver.observe(el));
 
+  /* ============================================================
+     FILTER NAV
+     ============================================================ */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      projectCards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const tags = card.dataset.tags || '';
+          if (tags.split(' ').includes(filter)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+
   // Project cards — staggered
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

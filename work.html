@@ -71,10 +71,19 @@
         <p class="projects-intro reveal-up" data-delay="0.1">A selection of our recent work, spanning web design, UX/UI and visual content. Each project is built with a focus on clarity, performance and creating meaningful experiences that deliver real results.</p>
       </div>
 
+      <!-- Filter nav -->
+      <div class="projects-filter-nav">
+        <button class="filter-btn active" data-filter="all">View All</button>
+        <button class="filter-btn" data-filter="ux">UX / UI Design</button>
+        <button class="filter-btn" data-filter="web">Website Development</button>
+        <button class="filter-btn" data-filter="app">App Design</button>
+        <button class="filter-btn" data-filter="photo">Photography</button>
+      </div>
+
       <!-- Cards grid -->
       <div class="projects-grid">
 
-        <article class="project-card reveal-card" data-card-delay="0">
+        <article class="project-card reveal-card" data-card-delay="0" data-tags="ux web">
           <a href="project-blackhat.html" class="project-card-inner">
             <div class="project-card-img-wrap">
               <img src="Website Images/BlackHat - Our Work Card.png" alt="BlackHat Defence" class="project-card-img" />
@@ -96,7 +105,7 @@
           </a>
         </article>
 
-        <article class="project-card reveal-card" data-card-delay="1">
+        <article class="project-card reveal-card" data-card-delay="1" data-tags="ux app">
           <a href="project-where2eat.html" class="project-card-inner">
             <div class="project-card-img-wrap">
               <img src="Website Images/Where2Eat - Our Work Card.png" alt="Where 2 Eat" class="project-card-img" />
@@ -119,7 +128,7 @@
           </a>
         </article>
 
-        <article class="project-card reveal-card" data-card-delay="2">
+        <article class="project-card reveal-card" data-card-delay="2" data-tags="ux web">
           <a href="project-marluther.html" class="project-card-inner">
             <div class="project-card-img-wrap">
               <img src="Website Images/Marluther Hotel - Our Work Card.png" alt="The Marluther Hotel" class="project-card-img" />
