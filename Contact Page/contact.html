@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Sora Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body class="preloader-active">
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-assets">
+      <div class="loading-circle"></div>
+      <img src="../Website Images/Sora Star.png" alt="Sora Studios" class="sora-star" />
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../Home Page/index.html" class="nav-logo">
+        <img src="../Website Images/Sora Studios Logo.png" alt="Sora Studios" />
+      </a>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <button class="nav-close" id="navClose" aria-label="Close menu">&#x2715;</button>
+        <li><a href="../Home Page/index.html">Home</a></li>
+        <li><a href="../Services Page/services.html">Services</a></li>
+        <li><a href="../Our Work Page/work.html">Our Work</a></li>
+        <li><a href="../Home Page/index.html#about">About us</a></li>
+        <li><a href="contact.html" class="nav-cta active-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-sticky-wrap">
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <img src="../Website Images/Contact Hero Imgae.png" alt="" class="hero-bg-img" />
+        <div class="hero-bg-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-eyebrow animate-stagger" data-delay="0">Contact Us</p>
+        <h1 class="hero-headline animate-stagger" data-delay="1">
+          Got an <span class="gebuk">idea</span>? Let's talk it through.
+        </h1>
+      </div>
+      <div class="hero-scroll animate-stagger" data-delay="2" id="scrollDown">
+        <div class="hero-scroll-inner">
+          <span class="scroll-label">Scroll Down</span>
+          <img src="../Website Images/Hero Down Arrow.png" alt="Scroll down" class="scroll-arrow" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact-form">
+    <div class="contact-inner">
+
+      <!-- Header row -->
+      <div class="contact-header">
+        <h2 class="contact-title reveal-up">Contact Us</h2>
+        <p class="contact-intro reveal-up" data-delay="0.1">Whether you're starting from scratch or refining an existing idea, we're here to help. Tell us about your project, your goals, and where you want to go — we'll take care of the rest.</p>
+      </div>
+
+      <hr class="contact-divider reveal-up" data-delay="0.15" />
+
+      <!-- Form card -->
+      <div class="form-card reveal-up" data-delay="0.2">
+
+        <!-- SUCCESS STATE -->
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="23" stroke="rgba(61,184,126,0.6)" stroke-width="1.5"/>
+              <path d="M14 24l7 7 13-14" stroke="#3db87e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="form-success-title">Thank you for getting in touch!</h3>
+          <p class="form-success-sub">We look forward to speaking to you shortly.</p>
+        </div>
+
+        <!-- FORM -->
+        <form class="contact-form" id="contactForm" novalidate>
+
+          <div class="form-field" id="field-name">
+            <label class="form-label" for="fullName">Full Name</label>
+            <input class="form-input" type="text" id="fullName" name="fullName" placeholder="Your full name" autocomplete="name" />
+            <span class="form-error">Please enter your full name</span>
+          </div>
+
+          <div class="form-field" id="field-email">
+            <label class="form-label" for="emailAddress">Email Address</label>
+            <input class="form-input" type="email" id="emailAddress" name="emailAddress" placeholder="your@email.com" autocomplete="email" />
+            <span class="form-error">Please enter a valid email address</span>
+          </div>
+
+          <div class="form-field" id="field-phone">
+            <label class="form-label" for="phoneNumber">Phone Number</label>
+            <input class="form-input" type="tel" id="phoneNumber" name="phoneNumber" placeholder="+44 7700 000000" autocomplete="tel" />
+            <span class="form-error">Please enter your phone number</span>
+          </div>
+
+          <div class="form-field" id="field-service">
+            <label class="form-label" for="serviceRequired">Service Required</label>
+            <div class="form-select-wrap">
+              <select class="form-input form-select" id="serviceRequired" name="serviceRequired">
+                <option value="" disabled selected>Select a service...</option>
+                <option value="not-sure">I'm not sure yet</option>
+                <option value="ux">UX / UI Design</option>
+                <option value="web">Website Development</option>
+                <option value="photography">Photography</option>
+                <option value="app">App Design</option>
+              </select>
+              <span class="select-arrow">
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1l5 5 5-5" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </div>
+            <span class="form-error">Please select a service</span>
+          </div>
+
+          <!-- Conditional: existing website field -->
+          <div class="form-field form-field--hidden" id="field-website">
+            <label class="form-label" for="existingWebsite">Already have a website?</label>
+            <input class="form-input" type="url" id="existingWebsite" name="existingWebsite" placeholder="Enter existing website URL" />
+          </div>
+
+          <div class="form-field" id="field-message">
+            <label class="form-label" for="additionalInfo">Tell us more:</label>
+            <textarea class="form-input form-textarea" id="additionalInfo" name="additionalInfo" placeholder="Additional Information" rows="5"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="submitBtn">Submit</button>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="contact.js"></script>
+</body>
+</html>
