@@ -886,7 +886,7 @@ body.preloader-active {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('Website Images/About us background image.png') center center / cover no-repeat;
+  background: url('../Website Images/About us background image.png') center center / cover no-repeat;
   z-index: 0;
 }
 
