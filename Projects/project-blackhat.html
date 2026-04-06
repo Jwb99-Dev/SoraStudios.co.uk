@@ -259,6 +259,27 @@
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../Home Page/index.html" class="nav-logo">
+        <img src="../Website Images/Sora Studios Logo.png" alt="Sora Studios" />
+      </a>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <button class="nav-close" id="navClose" aria-label="Close menu">&#x2715;</button>
+        <li><a href="../Home Page/index.html">Home</a></li>
+        <li><a href="../Services Page/services.html">Services</a></li>
+        <li><a href="../Our Work Page/work.html" class="active">Our Work</a></li>
+        <li><a href="../Home Page/index.html#about">About us</a></li>
+        <li><a href="../Home Page/index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="project-page">
 
     <!-- BACK BUTTON -->
@@ -332,6 +353,29 @@
   </div>
 
   <script>
+    // Navbar scroll + mobile toggle
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navClose = document.getElementById('navClose');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+    });
+    if (navClose) navClose.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('active');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    });
+
     // Simple scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {

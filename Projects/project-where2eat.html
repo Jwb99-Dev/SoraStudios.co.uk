@@ -9,20 +9,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../Our Work Page/work.css" />
   <style>
+
     .project-page {
       min-height: 100vh;
-      padding: 0 24px 80px;
+      padding: 0 24px 100px;
       max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
     }
+
     .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       margin-top: 120px;
-      margin-bottom: 60px;
+      margin-bottom: 56px;
       font-family: var(--font-body);
       font-size: 0.875rem;
       color: rgba(255,255,255,0.65);
@@ -44,32 +46,322 @@
       opacity: 0.65;
       transform: rotate(180deg);
     }
-    .project-page-title {
+
+    .project-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: flex-start;
+      margin-bottom: 80px;
+    }
+
+    .project-hero-img {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #1a1a2e;
+    }
+    .project-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .project-hero-title {
       font-family: var(--font-hero);
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 400;
       color: #fff;
-      margin-bottom: 20px;
+      line-height: 1.15;
     }
-    .project-page-sub {
-      font-size: 1rem;
+
+    .project-skills-label {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .project-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .proj-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #fff;
+    }
+    .tag-pink     { background: #e8589a; }
+    .tag-blue     { background: #4b6ce8; }
+    .tag-green    { background: #3db87e; }
+    .tag-purple   { background: #9b59d4; }
+    .tag-branding { background: #C83032; }
+
+    .project-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 60px 0;
+    }
+
+    .project-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px 60px;
+      align-items: start;
+    }
+
+    .project-section-label {
+      font-family: var(--font-hero);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .project-section-content {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.8;
       color: var(--clr-muted);
-      line-height: 1.75;
-      max-width: 560px;
+      padding-top: 6px;
+      width: 100%;
     }
-    @media (max-width: 480px) {
+
+    .colour-swatches {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 90px;
+      width: 100%;
+    }
+    .colour-swatch { flex: 1; }
+
+    .font-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 6px;
+      width: 100%;
+      align-items: end;
+    }
+    .font-semibold {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .font-bold {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .design-label {
+      font-family: var(--font-hero);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    /* 3-column grid for first 3 screens, 4th full width below */
+    .design-grid-top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .design-img {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .design-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .design-img:hover img { transform: scale(1.03); } 
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 700px) {
+      .project-hero { grid-template-columns: 1fr; gap: 28px; }
+      .project-section { grid-template-columns: 1fr; gap: 16px; }
+      .design-grid-top { grid-template-columns: repeat(2, 1fr); }
       .back-btn { margin-top: 90px; }
     }
+    @media (max-width: 480px) {
+      .colour-swatches { height: 70px; }
+      .design-grid-top { grid-template-columns: 1fr 1fr; gap: 10px; }
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../Home Page/index.html" class="nav-logo">
+        <img src="../Website Images/Sora Studios Logo.png" alt="Sora Studios" />
+      </a>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <button class="nav-close" id="navClose" aria-label="Close menu">&#x2715;</button>
+        <li><a href="../Home Page/index.html">Home</a></li>
+        <li><a href="../Services Page/services.html">Services</a></li>
+        <li><a href="../Our Work Page/work.html" class="active">Our Work</a></li>
+        <li><a href="../Home Page/index.html#about">About us</a></li>
+        <li><a href="../Home Page/index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="project-page">
+
     <a href="../Our Work Page/work.html" class="back-btn">
       <img src="../Website Images/Back Arrow Right.png" alt="" />
       Back to Projects
     </a>
-    <h1 class="project-page-title">Where 2 Eat</h1>
-    <p class="project-page-sub">This case study is coming soon. Check back shortly for the full project breakdown, including the brief, process and final deliverables.</p>
+
+    <!-- HERO -->
+    <div class="project-hero reveal">
+      <div class="project-hero-img">
+        <img src="../Website Images/Where2Eat - Our Work Card.png" alt="Where 2 Eat app" />
+      </div>
+      <div class="project-hero-info">
+        <h1 class="project-hero-title">Where 2 Eat</h1>
+        <div>
+          <p class="project-skills-label">Skills Used:</p>
+          <div class="project-hero-tags">
+            <span class="proj-tag tag-pink">UX / UI Design</span>
+            <span class="proj-tag tag-purple">App Design</span>
+            <span class="proj-tag tag-branding">Branding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE GOAL -->
+    <div class="project-section reveal">
+      <div class="project-section-label">The Goal</div>
+      <div class="project-section-content">
+        The goal of this project was to design an intuitive and user-friendly mobile experience that simplifies the process of finding and booking restaurants. Starting from scratch, the focus was on creating a seamless journey where users can quickly search by location, time and group size, and instantly discover available tables. The aim was to reduce friction, improve decision-making, and deliver a fast, reliable booking experience.
+      </div>
+    </div>
+
+    <div class="project-divider"></div>
+
+    <!-- COLOURS -->
+    <div class="project-section reveal">
+      <div class="project-section-label">Colours</div>
+      <div class="project-section-content">
+        <div class="colour-swatches">
+          <div class="colour-swatch" style="background: #f5ede0;"></div>
+          <div class="colour-swatch" style="background: #b85c38;"></div>
+          <div class="colour-swatch" style="background: #ffffff;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-divider"></div>
+
+    <!-- FONTS -->
+    <div class="project-section reveal">
+      <div class="project-section-label">Fonts</div>
+      <div class="project-section-content">
+        <div class="font-list">
+          <span class="font-semibold">Montserrat Semi Bold</span>
+          <span class="font-bold">Montserrat Bold</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-divider"></div>
+
+    <!-- DESIGN -->
+    <div class="reveal">
+      <h2 class="design-label">Design</h2>
+      <div class="design-grid-top">
+        <div class="design-img">
+          <img src="../Website Images/Where2eat design.png" alt="Where 2 Eat login screen" />
+        </div>
+        <div class="design-img">
+          <img src="../Website Images/Where2eat design search.png" alt="Where 2 Eat search screen" />
+        </div>
+        <div class="design-img">
+          <img src="../Website Images/Where2eat design search 2.png" alt="Where 2 Eat map results" />
+        </div>
+        <div class="design-img">
+          <img src="../Website Images/Where2eat Search Results 2.png" alt="Where 2 Eat search results list" />
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navClose = document.getElementById('navClose');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+    });
+    if (navClose) navClose.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('active');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
