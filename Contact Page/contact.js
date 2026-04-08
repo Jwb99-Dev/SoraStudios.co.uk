@@ -184,11 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Submit via EmailJS (see setup instructions in README) ----
     // If EmailJS is configured, uncomment and fill in your IDs:
-    /*
+    
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID',   // e.g. 'service_abc123'
-        'YOUR_TEMPLATE_ID',  // e.g. 'template_xyz789'
+        'service_o8in8tj',   // e.g. 'service_abc123'
+        'template_nmtqogw',  // e.g. 'template_xyz789'
         {
           from_name:       formData.fullName,
           from_email:      formData.emailAddress,
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Optionally show an error message here
       return;
     }
-    */
+    
 
     // ---- Show success state ----
     form.style.display = 'none';

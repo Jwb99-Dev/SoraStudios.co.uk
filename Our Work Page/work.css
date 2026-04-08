@@ -329,11 +329,11 @@ body.preloader-active { overflow: hidden; }
   background: var(--clr-bg);
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
-  padding: 80px 24px 100px;
+  padding: 80px 48px 100px;
 }
 
 .projects-inner {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
