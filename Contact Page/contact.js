@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
           service:         formData.serviceRequired,
           existing_website: formData.existingWebsite,
           message:         formData.additionalInfo,
-          to_email:        'contact@sora-studios.co.uk',
+          to_email:        'sorastudios99@gmail.com',
         }
       );
     } catch (err) {
