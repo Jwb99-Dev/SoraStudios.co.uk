@@ -203,7 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const workRight = document.getElementById('workRight');
 
   let currentOffset = 0;
-  const CARD_WIDTH  = 300; // card width + gap
+
+  function getCardWidth() {
+    // On mobile, snap to full wrapper width. On desktop use fixed card width.
+    const wrapperWidth = workTrack ? workTrack.parentElement.clientWidth : 300;
+    return window.innerWidth <= 768 ? wrapperWidth : 300;
+  }
 
   function updateWorkArrows() {
     if (!workTrack) return;
@@ -218,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!workTrack) return;
     const wrapperWidth = workTrack.parentElement.clientWidth;
     const maxScroll    = workTrack.scrollWidth - wrapperWidth;
+    const CARD_WIDTH   = getCardWidth();
 
     currentOffset += direction * -CARD_WIDTH;
     currentOffset  = Math.max(-maxScroll, Math.min(0, currentOffset));
