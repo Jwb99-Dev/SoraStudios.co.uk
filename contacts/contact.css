@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Gebuk';
-  src: url('../fonts/Gebuk-7O7nK.ttf') format('truetype');
+  src: url('fonts/Gebuk-7O7nK.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
