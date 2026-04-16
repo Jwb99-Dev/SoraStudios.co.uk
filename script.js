@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroVideo = document.querySelector('.hero-bg-video');
   if (heroVideo) {
     heroVideo.playbackRate = 0.5;
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        heroVideo.muted = true;
+        heroVideo.play();
+      });
+    }
   }
 
   /* ============================================================

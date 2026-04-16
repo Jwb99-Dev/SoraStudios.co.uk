@@ -332,25 +332,56 @@ body.preloader-active { overflow: hidden; }
 .about-hero-scroll {
   position: absolute;
   bottom: 36px;
-  right: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
   z-index: 2;
+}
+
+.about-hero-scroll:hover .hero-scroll-inner {
+  transform: scale(1.08);
+}
+
+.about-hero-scroll:hover .scroll-label {
+  color: #ffffff;
+}
+
+.about-hero-scroll:hover .scroll-arrow {
+  filter: brightness(0) invert(1) brightness(1.5) !important;
+}
+
+.hero-scroll-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  transition: transform 0.3s ease;
 }
 
-.about-hero-scroll span {
-  display: block;
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.5));
-  animation: lineGrow 2s ease-in-out infinite;
+.scroll-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s ease;
 }
 
-@keyframes lineGrow {
-  0%, 100% { transform: scaleY(0.4); opacity: 0.4; transform-origin: top; }
-  50%       { transform: scaleY(1); opacity: 1; transform-origin: top; }
+.scroll-arrow {
+  width: 20px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  animation: arrowBounce 1.6s ease-in-out infinite;
 }
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+.about-hero-scroll:hover {
+  transform: translateX(-50%) scale(1.08);
+} 
 
 /* ============================================================
    INTRO STRIP
@@ -987,7 +1018,37 @@ body.preloader-active { overflow: hidden; }
   }
   .about-hero-title { text-align: center; }
   .about-hero-sub { text-align: center; }
-  .about-hero-scroll { right: 24px; }
+  .about-hero-scroll { bottom: 72px; }
+
+  .hero-scroll-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.3s ease;
+}
+
+.scroll-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s ease;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: auto;
+  animation: arrowBounce 1.6s ease-in-out infinite;
+  filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
 
   /* INTRO */
   .about-intro-inner {

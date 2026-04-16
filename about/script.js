@@ -160,4 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.values-header, .process-header').forEach(el => headerObserver.observe(el));
 
+  /* ============================================================
+     SCROLL DOWN BUTTON
+     ============================================================ */
+  const scrollDown = document.getElementById('scrollDown');
+  if (scrollDown) {
+    scrollDown.addEventListener('click', () => {
+      document.querySelector('.story-section').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
 });
