@@ -979,7 +979,14 @@ body.preloader-active { overflow: hidden; }
   .nav-hamburger.active span:nth-child(3) { opacity: 0; }
 
   /* HERO */
-  .about-hero-content { padding: 0 24px 64px; }
+  /* HERO */
+  .about-hero-content {
+    padding: 0 24px 64px;
+    text-align: center;
+    align-items: center;
+  }
+  .about-hero-title { text-align: center; }
+  .about-hero-sub { text-align: center; }
   .about-hero-scroll { right: 24px; }
 
   /* INTRO */
