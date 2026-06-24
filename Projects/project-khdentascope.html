@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KH DentaScope UK — Sora Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Sora:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/ourwork/work.css" />
+  <link rel="icon" type="image/png" href="../Website Images/Website Favcon.png" />
+  <link rel="apple-touch-icon" href="../Website Images/Website Favcon.png" />
+  <style>
+
+    /* ── PAGE WRAPPER ── */
+    .project-page {
+      min-height: 100vh;
+      padding: 0 24px 100px;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── BACK BUTTON ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 120px;
+      margin-bottom: 56px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 10px 20px;
+      width: fit-content;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(255,255,255,0.4);
+    }
+    .back-btn img {
+      width: 14px;
+      filter: brightness(0) invert(1);
+      opacity: 0.65;
+      transform: rotate(180deg);
+    }
+
+    /* ── HERO BLOCK: image left, title right ── */
+    .project-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: flex-start;
+      margin-bottom: 80px;
+    }
+
+    .project-hero-img {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #1a1a2e;
+    }
+    .project-hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .project-hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .project-hero-title {
+      font-family: var(--font-hero);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .project-skills-label {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .project-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .proj-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #fff;
+    }
+    .tag-pink { background: #e8589a; }
+    .tag-blue { background: #4b6ce8; }
+
+    /* ── DIVIDER ── */
+    .project-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 60px 0;
+    }
+
+    /* ── SECTION ROWS: label left, content right ── */
+    .project-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px 60px;
+      align-items: start;
+    }
+
+    .project-section-label {
+      font-family: var(--font-hero);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .project-section-content {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--clr-muted);
+      padding-top: 6px;
+      width: 100%;
+    }
+
+    /* ── COLOURS ── */
+    .colour-swatches {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 90px;
+      width: 100%;
+    }
+    .colour-swatch { flex: 1; }
+
+    /* ── FONTS ── */
+    .font-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 6px;
+      width: 100%;
+      align-items: flex-end;
+    }
+    .font-sora {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .font-inter {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── GALLERY ── */
+    .gallery-label {
+      font-family: var(--font-hero);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.07);
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-thumb:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 24px rgba(255,255,255,0.12);
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-thumb:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.94);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-img-wrap {
+      max-width: 90vw;
+      max-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-img-wrap img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      font-weight: 300;
+      z-index: 2001;
+    }
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      border-color: #fff;
+    }
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      z-index: 2001;
+    }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── GO TO SITE ── */
+    .goto-site-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 2px;
+      width: fit-content;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .goto-site-link:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .project-hero { grid-template-columns: 1fr; gap: 28px; }
+      .project-section { grid-template-columns: 1fr; gap: 16px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .back-btn { margin-top: 90px; }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
+    @media (max-width: 480px) {
+      .colour-swatches { height: 70px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .lightbox-close { top: 14px; right: 14px; width: 38px; height: 38px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="../Website Images/Sora Studios Logo.png" alt="Sora Studios" />
+      </a>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <button class="nav-close" id="navClose" aria-label="Close menu">&#x2715;</button>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/ourwork" class="active">Our Work</a></li>
+        <li><a href="/#about">About us</a></li>
+        <li><a href="/contacts" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="project-page">
+
+    <!-- BACK BUTTON -->
+    <a href="/ourwork" class="back-btn">
+      <img src="../Website Images/Back Arrow Right.png" alt="" />
+      Back to Projects
+    </a>
+
+    <!-- HERO: image + title/tags -->
+    <div class="project-hero reveal">
+      <div class="project-hero-img">
+        <img src="../Website Images/Case study - KHDentascopeUK.png" alt="KH DentaScope UK website" />
+      </div>
+      <div class="project-hero-info">
+        <h1 class="project-hero-title">KH DentaScope UK</h1>
+        <div>
+          <p class="project-skills-label">Skills Used:</p>
+          <div class="project-hero-tags">
+            <span class="proj-tag tag-pink">UX / UI Design</span>
+            <span class="proj-tag tag-blue">Website Development</span>
+          </div>
+        </div>
+        <a href="https://www.khdentascope.uk" target="_blank" rel="noopener noreferrer" class="goto-site-link">
+          Go to site ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- THE GOAL -->
+    <div class="project-section reveal">
+      <div class="project-section-label">The Goal</div>
+      <div class="project-section-content">
+        The primary goal of the KH DentaScope website was to establish a professional, trustworthy online presence that reflects the quality and innovation of the brand. The website was designed to showcase the company's dental imaging products, highlight partnerships with leading manufacturers, and build credibility through dedicated case studies and client testimonials. Alongside creating a modern and responsive user experience, the objective was to make it easy for potential customers to understand the company's services, explore its expertise, and get in touch — ultimately supporting business growth and generating high-quality enquiries.
+      </div>
+    </div>
+
+    <div class="project-divider"></div>
+
+    <!-- COLOURS -->
+    <div class="project-section reveal">
+      <div class="project-section-label">Colours</div>
+      <div class="project-section-content">
+        <div class="colour-swatches">
+          <div class="colour-swatch" style="background: #ffffff; outline: 1px solid rgba(255,255,255,0.15);"></div>
+          <div class="colour-swatch" style="background: #0D1B2A;"></div>
+          <div class="colour-swatch" style="background: #043D6B;"></div>
+          <div class="colour-swatch" style="background: #E8F2FB;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-divider"></div>
+
+    <!-- FONTS -->
+    <div class="project-section reveal">
+      <div class="project-section-label">Fonts</div>
+      <div class="project-section-content">
+        <div class="font-list">
+          <span class="font-sora">Sora Sans Serif</span>
+          <span class="font-inter">Inter Sans Serif</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-divider"></div>
+
+    <!-- GALLERY -->
+    <div class="reveal">
+      <h2 class="gallery-label">Project Images</h2>
+      <div class="gallery-grid" id="galleryGrid">
+
+        <div class="gallery-thumb">
+          <img src="../Website Images/KHDentascope/kh-1.png" alt="KH DentaScope screenshot 1" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="../Website Images/KHDentascope/kh-2.png" alt="KH DentaScope screenshot 2" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="../Website Images/KHDentascope/kh-3.png" alt="KH DentaScope screenshot 3" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="../Website Images/KHDentascope/kh-4.png" alt="KH DentaScope screenshot 4" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="../Website Images/KHDentascope/kh-5.png" alt="KH DentaScope screenshot 5" loading="lazy" />
+        </div>
+        <div class="gallery-thumb">
+          <img src="../Website Images/KHDentascope/kh-6.png" alt="KH DentaScope screenshot 6" loading="lazy" />
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /project-page -->
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&#x2715;</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8592;</button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next">&#8594;</button>
+    <div class="lightbox-img-wrap">
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <script>
+    /* ── NAVBAR ── */
+    const navbar    = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    const navClose  = document.getElementById('navClose');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+    });
+
+    if (navClose) {
+      navClose.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    }
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    /* ── SCROLL REVEAL ── */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    /* ── LIGHTBOX ── */
+    const lightbox        = document.getElementById('lightbox');
+    const lightboxImg     = document.getElementById('lightboxImg');
+    const lightboxClose   = document.getElementById('lightboxClose');
+    const lightboxPrev    = document.getElementById('lightboxPrev');
+    const lightboxNext    = document.getElementById('lightboxNext');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const thumbs          = document.querySelectorAll('.gallery-thumb');
+
+    let currentIndex = 0;
+
+    const images = Array.from(thumbs).map(thumb => {
+      const img = thumb.querySelector('img');
+      return { src: img.src, alt: img.alt };
+    });
+
+    function updateCounter() {
+      lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = images[index].src;
+      lightboxImg.alt = images[index].alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      updateCounter();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+      updateCounter();
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+      updateCounter();
+    }
+
+    thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => openLightbox(i)));
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  showPrev();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape')     closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
