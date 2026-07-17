@@ -544,13 +544,27 @@ body.preloader-active { overflow: hidden; }
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
+.pricing-card-price-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.pricing-card-price-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--clr-muted);
+  line-height: 1.2;
+}
+
 .pricing-card-price {
   font-family: var(--font-hero);
   font-size: 3rem;
   font-weight: 400;
   color: #fff;
   line-height: 1;
-  margin-bottom: 4px;
 }
 
 .pricing-card-name {
